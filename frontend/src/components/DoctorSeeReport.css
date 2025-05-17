@@ -1,0 +1,159 @@
+/* DoctorSeeReport.css */
+
+/* Container for the doctor view */
+.doctor-see-report-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  margin-top: 100px; /* Space below fixed header */
+}
+
+.history-card {
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  padding: 15px 20px;
+  margin: 10px 0;
+  width: 90%;
+                  /* Set a wider width */
+  max-width: 1400px;    
+  
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.history-card p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.history-card strong {
+  color: #007bff;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.message {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Center Back Button */
+.back-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.back-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+/* Header/Nav */
+.login-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d33b3b;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+  cursor: pointer;
+  position: relative;
+  right: 5px !important;
+}
+
+.home-btn {
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  position: relative;
+  left: 600px;
+}
+
+.logout-btn {
+  background: #fff !important;
+  color: #000;
+  font-weight: 600;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  position: relative;
+  left: 350px;
+  width: 60px;
+}
+
+.home-btn:hover,
+.logout-btn:hover {
+  background-color: #eee;
+}

@@ -1,0 +1,301 @@
+/* .search-doctor-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.search-doctor-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+  border-bottom: 2px solid #eaeaea;
+  padding-bottom: 0.6rem;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto 1.5rem auto;
+  width: 100%;
+}
+
+.search-form input,
+.search-form button {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.search-form button {
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.search-form button:hover {
+  background-color: #0056b3;
+}
+
+.results {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.doctor-card-container {
+  display: grid;
+  gap: 1rem;
+}
+
+.doctor-card {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-left: 5px solid #28a745;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+.doctor-card h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.doctor-card p {
+  margin: 0.3rem 0;
+  color: #555;
+}
+
+.message {
+  color: #ff4444;
+  font-weight: bold;
+  margin-bottom: 1rem;
+} */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff !important; /* White background for the entire page */
+}
+.search-doctor-container {
+  max-width: 600px;
+   margin: 7rem auto 2rem auto;
+  padding: 1.5rem;
+  background-color: #ffffff !important;
+  border-radius: 8px;
+  border: 2px solid #999999; /* Darker border for better visibility */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  position: relative;
+  top: 10px;
+}
+
+.search-doctor-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+  border-bottom: 2px solid #eaeaea;
+  padding-bottom: 0.6rem;
+  
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto 1.5rem auto;
+  width: 100%;
+  
+}
+
+.search-form input,
+.search-form button {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.search-form button {
+  background-color: #d33b3b!important;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.search-form button:hover {
+  background-color: #0056b3;
+}
+
+.message {
+  color: #ff4444;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.doctor-card-container {
+  display: grid;
+  gap: 1rem;
+}
+
+.doctor-card {
+  background: #ffffff;
+  padding: 1.5rem;
+  border: 2px solid #999999; /* Darker border for visibility */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+  border-color: #333333; /* Very dark gray on hover for clear contrast */
+}
+
+.doctor-card h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.doctor-card p {
+  margin: 0.3rem 0;
+  color: #555;
+}
+
+.doctor-card p strong {
+  color: #007bff;
+}
+
+.doctor-card p strong:before {
+  content: ": "; /* Add colon after the label */
+}
+
+.doctor-card button {
+  margin-top: 1rem;
+  background-color: #d33b3b!important;
+  color: white;
+  padding: 0.6rem 1rem;
+  border: 2px solid #b32b2b; /* Add a darker red border */
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.doctor-card button:hover {
+  background-color: #d33b3b; /* Darker red on hover */
+  border-color: #8c2222; /* Even darker red border on hover */
+}
+.login-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d33b3b;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+/* .navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+} */
+
+.logo {
+  height: 60px;
+  width: auto;
+  cursor: pointer;
+  position:relative;
+  right:5px!important;
+}
+.home-btn {
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  position: relative;
+  left: 600px;
+}
+
+.logout-btn {
+  background: #fff !important;
+  color: #000;
+  font-weight: 600;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  position: relative;
+  left: 350px;
+  width: 60px;
+}
+
+/* Hover effect for both buttons */
+.home-btn:hover,
+.logout-btn:hover {
+  background-color: #eee !important;
+  color: #000;
+}
+
+/* Active/clicked style for logout */
+.logout-btn.active {
+  background-color: #555 !important; /* dark grey */
+  color: #fff !important; /* white text */
+}
+
+
+/* Center backbtn */
+.backbtn {
+  padding: 12px 24px;
+  width: auto !important;
+  max-width: 250px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  display: block;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.backbtn:hover {
+  background-color: #45a049;
+  transform: translateY(-1px);
+}
+
+.backbtn:active {
+  background-color: #388e3c;
+  transform: scale(0.98);
+}

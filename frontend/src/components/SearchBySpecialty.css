@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Page Heading */
+h2 {
+  text-align: center;
+  color: #000000 !important;
+  margin-bottom: 20px;
+}
+
+/* Container for the search form */
+.specialty-search-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 2px solid #000000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdown */
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+select:hover {
+  border-color: #4caf50;
+}
+
+/* Common Button Styles */
+button {
+  padding: 12px;
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:active {
+  background-color: #388e3c;
+  transform: scale(0.98);
+}
+
+/* Error Message */
+p.error {
+  color: red;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Doctor List */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+li:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+li strong {
+  font-size: 18px;
+  color: #000000 !important;
+}
+
+li p {
+  font-size: 14px;
+  color: #000000;
+  margin-top: 8px;
+}
+  
+.login-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d33b3b;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+/* .navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+} */
+
+.logo {
+  height: 60px;
+  width: auto;
+  cursor: pointer;
+  position:relative;
+  right:5px!important;
+}
+
+.home-btn{
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  position:relative;
+  left:600px;
+}
+.logout-btn {
+  background: #fff!important;
+  color: #000;
+  font-weight: 600;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  position:relative;
+  left:350px;
+  width:60px;
+}
+
+.home-btn:hover,
+.logout-btn:hover,
+.home-btn:active,
+.logout-btn:active {
+  background-color: #eee !important;
+}
+
+
+
+/* Center backbtn */
+.backbtn {
+  padding: 12px 24px;
+  width: auto !important;
+  max-width: 250px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  display: block;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.backbtn:hover {
+  background-color: #45a049;
+  transform: translateY(-1px);
+}
+
+.backbtn:active {
+  background-color: #388e3c;
+  transform: scale(0.98);
+}

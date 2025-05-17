@@ -1,0 +1,195 @@
+* {
+  box-sizing: border-box;
+}
+
+
+.auth-container {
+  height: 200vh;
+  background: linear-gradient(to bottom, #e53935, #2b0000);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Segoe UI', sans-serif;
+  position:relative;
+  top:150px;
+}
+
+
+/* Form */
+.custom-form {
+  background-color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  position: relative;
+  bottom:100px;
+}
+
+/* Header */
+.form-header {
+  margin-bottom: 20px;
+}
+
+.form-header h2 {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Role Switcher */
+.role-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.role-switcher button {
+  padding: 10px 16px;
+  font-weight: bold;
+  border: 2px solid #000;
+  background-color: white;
+  color: black;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.role-switcher .active {
+  background-color: #e53935!important;
+  color: white!important;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 2px solid #000;
+  background-color: rgb(50, 49, 49);
+  color: white;
+  font-size: 14px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #ccc;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="date"] {
+  color-scheme: dark;
+}
+
+input[type="file"] {
+  color: white;
+  background-color: rgb(50, 49, 49);
+  padding: 8px;
+  border-radius: 6px;
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  background-color: #e53935 !important;
+  color: white;
+  border: none;
+  padding: 10px 0;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #b71c1c;
+}
+
+/* Messages */
+.error,
+.success {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+.login-header {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: transparent;
+  z-index: 1000;
+}
+
+.logo img {
+  height: 80px; /* Larger logo */
+  cursor: pointer;
+}
+
+.home-btn {
+  background: linear-gradient(to bottom right, #fffdfd, #e7e4e4); /* Gradient background */
+  border: 2px solid #000000; /* Border styling */
+  padding: 5px 15px; /* Reduced padding for smaller button */
+  border-radius: 8px; /* Rounded corners */
+  font-size: 30px; /* Smaller font size */
+  cursor: pointer;
+  position: relative;
+  right: 50px; /* Move button slightly to the right */
+  transition: all 0.3s ease;
+  color: black; /* Black text color */
+  width:120px;
+}
+
+.home-btn:hover {
+  background: linear-gradient(to bottom right, #fffdfd, #e7e4e4); /* Darker background on hover */
+  color: white; /* Change text color to white on hover */
+}
+
+.auth-container {
+  padding-top: 100px; /* Adjust padding to avoid overlap with larger header */
+}
+
+
+
+.file-note {
+  color: black;
+}

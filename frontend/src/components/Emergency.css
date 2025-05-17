@@ -1,0 +1,91 @@
+.emergency-request-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 100px auto; /* push form below navbar */
+  padding: 30px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.emergency-request-form h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 26px;
+  color: #333;
+}
+
+/* Ensure the form uses full width and alignment */
+.emergency-request-form form {
+  width: 100%;
+}
+
+/* Group label + input neatly */
+.form-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  color: #000;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Submit button */
+.emergency-request-form button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+}
+
+.emergency-request-form button:hover {
+  background-color: #e63939;
+}
+
+.emergency-request-form button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Success and error message styling */
+.emergency-request-form .error {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.emergency-request-form .success {
+  color: #2ecc71;
+  font-size: 14px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,171 @@
+/* Centering the whole screen with form */
+
+html, body {
+  background: #ffffff !important;
+}
+
+.auth-container {
+  height: 100vh;
+  background: white !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  padding-top: 100px; /* Space for header */
+}
+
+/* Login Form Styling */
+.login-form {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  padding: 30px 40px;
+  border-radius: 16px;
+  border: 2px solid #000;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position:relative;
+  bottom: 120px;
+
+}
+
+.login-form:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Heading */
+.login-form h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 25px;
+}
+
+/* Role Buttons */
+.role-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.role-buttons button {
+  padding: 14px 25px;
+  font-weight: bold;
+  border: 2px solid #000;
+  background-color: white !important;
+  color: black;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.role-buttons button:hover {
+  background-color: #d33b3b !important;
+}
+
+.role-buttons .active {
+  background-color: #d33b3b !important;
+  color: white;
+}
+
+/* Form Fields */
+form div {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+}
+
+form input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 2px solid #000;
+  font-size: 16px;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #d33b3b;
+  box-shadow: 0 0 8px rgba(211, 59, 59, 0.3);
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  background-color: #d33b3b !important;
+  color: white;
+  border: none;
+  padding: 14px 0;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #d33b3b;
+  transform: translateY(-2px);
+}
+
+/* Error Message */
+.error-message {
+  margin-top: 15px;
+  color: red;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* Header */
+.login-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #d33b3b !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  
+  /* Fix overflow causing scroll */
+  overflow: hidden;
+  height: 80px; /* Adjust height if needed */
+}
+
+
+.logo img {
+  height: 60px; /* Slightly reduced for better balance */
+  cursor: pointer;
+}
+
+.home-btn {
+  background: linear-gradient(to bottom right, #542f2f, #f0f0f0);
+  border: 2px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.home-btn:hover {
+  background: linear-gradient(to bottom right, #e0e0e0, #c0c0c0);
+  color: black;
+  border-color: #999;
+}

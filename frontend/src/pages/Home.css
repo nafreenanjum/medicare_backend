@@ -1,0 +1,406 @@
+.home-container {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom right, #ff4d4d, #000000);
+}
+
+/* Navbar */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: white;
+  color: black;
+}
+.header img {
+  width: 100px; /* Adjust the size as needed */
+  height: auto;
+  margin-right: 1rem; /* Space between logo and text */
+}
+
+.header .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff4d4d;
+}
+
+.header nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+  position:relative;
+  left:340px;
+  font-size:26px;
+}
+.header nav a.active {
+  border-bottom: 2px solid #ff4d4d;  /* Underline on active link */
+}
+
+.header nav a:hover {
+  color: #ff4d4d;  /* Change color on hover */
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end; /* Align buttons to the right side */
+}
+
+.auth-buttons .btn {
+  padding: 0.3rem 0.8rem;  /* Smaller padding */
+  border: 2px solid black;  /* Black border */
+  border-radius: 6px;       /* Slightly rounded */
+  background: white;        /* White background */
+  color: black;             /* Black text */
+  font-size: 1.6rem;        /* Smaller font size */
+  width: auto;              /* Auto width */
+  min-width: unset;         /* Remove min-width restriction */
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Optional hover effect for Home page buttons */
+.auth-buttons .btn:hover {
+  background: #ba2c2c;
+  color: white;
+  border-color: #ff4d4d;
+}
+
+
+.btn.login {
+  background: linear-gradient(to bottom right, #fffdfd, #e7e4e4);
+
+  border: 2px solid #000000;
+  position:relative;
+  right:10px !important;
+}
+
+.btn.login:hover {
+  background:#e03e3e;
+  color: white;  /* Ensure text stays white on hover */
+}
+
+.btn.register {
+  background: linear-gradient(to bottom right, #ffffff, #e7e4e4);
+  border: 2px solid #000000;
+  position:relative;
+  right:10px !important;
+
+}
+
+.btn.register:hover {
+  background: #e03e3e;
+  color: white;  /* Ensure text stays white on hover */
+}
+
+/* Hero */
+.hero-section {
+  text-align: center;
+  padding: 6rem 2rem;
+  color: #fff;
+  font-size: 1.8rem;
+}
+
+.hero-section p {
+  font-size: 2.8rem;
+  margin-top: 20px;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+}
+
+.hero-section h1 {
+  font-size: 3.5rem; /* Adjust the size for "Welcome to MEDI_CARE" */
+}
+
+.hero-section:hover p {
+  transform: scale(1.1);
+}
+
+/* Features */
+.features-section {
+  padding: 5rem 3rem; /* Increased padding */
+  background: #fff;
+  color: black;
+  text-align: center;
+}
+
+.features-section h2 {
+  font-size: 2.5rem; /* Bigger heading */
+  font-weight: bold;
+  margin-bottom: 3rem; /* More space below heading */
+  color: #ff4d4d;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Bigger min width for cards */
+  gap: 2rem; /* Increased gap between cards */
+  margin-top: 2rem;
+  grid-auto-rows: 1fr; /* Consistent height */
+}
+
+/* Feature Cards */
+.feature-card {
+  background: #f5f5f5;
+  padding: 2rem; /* Increased padding */
+  border-radius: 16px; /* Slightly more rounded */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+/* Hover effect for cards */
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card i {
+  font-size: 2.5rem; /* Bigger icon */
+  color: #ff4d4d;
+  margin-bottom: 1.5rem; /* More space below icon */
+}
+
+.feature-card h3 {
+  font-size: 1.5rem; /* Bigger card title */
+  font-weight: bold;
+  color: #ff4d4d;
+  transition: color 0.3s ease;
+}
+
+.feature-card:hover h3 {
+  color: #d64040;
+}
+
+/* Pop-up effect when clicked */
+.feature-card:active {
+  transform: translateY(-20px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+}
+
+/* Records Carousel */
+.records-section {
+  padding: 3rem 2rem;
+  text-align: center;
+  
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  height: 150px;
+}
+
+.carousel-item {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 1s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.carousel-item.active {
+  opacity: 1;
+  transform: translateX(0);
+  position: relative;
+}
+.records-section h2 {
+  font-size: 2.5rem; /* Bigger section heading */
+  font-weight: bold;
+  color: #f7f3f3;
+}
+
+.carousel-item h3 {
+  font-size: 1.75rem; /* Bigger carousel title */
+  font-weight: bold;
+  color: #877c7c;
+}
+
+.carousel-item p {
+  font-size: 1.2rem; /* Bigger carousel description */
+  color: #f9ecec;
+}
+
+
+/* Testimonials */
+.testimonials-section {
+  padding: 3rem 2rem;
+  background: #111;
+  text-align: center;
+}
+
+.testimonial-carousel {
+  position: relative;
+  overflow: hidden;
+  height: 120px;
+}
+
+.testimonial-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease-in-out;
+  position: absolute;
+  width: 100%;
+}
+
+.testimonial-item.active {
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+}
+
+.testimonial-item p {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.testimonial-item h4 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ff4d4d;
+}
+
+.footer {
+  background-color: #000 !important;
+  padding: 2rem 1rem;
+  color: white !important;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+  padding: 1rem;
+  background: transparent !important;
+}
+
+.footer-column h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: white !important;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+  color: white !important;
+  background: transparent !important;
+}
+
+.footer-column ul li a {
+  color: white !important;
+  text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+  color: #ccc !important;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  padding-left: 0;
+}
+
+.social-icons li {
+  list-style: none;
+  font-size: 1rem;
+}
+
+.social-icons li a {
+  color: white !important;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons li a:hover {
+  color: #ccc !important;
+}
+
+.social-icons i {
+  font-size: 1.2rem;
+}
+
+
+/* Footer Bottom */
+.footer-bottom {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #444;
+}
+
+.footer-bottom p {
+  color: white !important;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+
+.carousel-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.carousel-box {
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  width: 90%;
+}
+
+.carousel-images {
+  width: 100%;
+  height: 350px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-images img.active {
+  opacity: 1;
+}

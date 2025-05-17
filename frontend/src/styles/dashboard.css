@@ -1,0 +1,137 @@
+
+.dashboard-container {
+    padding: 50px;
+    font-family: sans-serif;
+    background: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  
+  .dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the welcome message */
+    background: #a5b6c3;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    position: relative; /* Positioning relative for the logout button */
+    width: 100%;
+    max-width: 1000px; /* Limiting max-width */
+  }
+  
+  .dashboard-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #151414;  /* Black color for the text */
+  }
+  
+  /* Profile photo styling */
+  .profile-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+  }
+  
+  /* Logout button styled and positioned in the top-right corner */
+  .logout-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 8px 16px;
+    background: #e53935;
+    color: rgb(232, 221, 221);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width:100px;
+  }
+  
+  .logout-btn:hover {
+    background: #c62828;
+  }
+  
+  /* General section styling for each dashboard block */
+  .dashboard-section {
+    background: rgb(234, 22, 22);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 1000px;  /* Max-width for better alignment */
+  }
+  
+  .dashboard-section h3 {
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for appointment list */
+  .appointment-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .appointment-list li {
+    border-bottom: 1px solid #a53d3d;
+    padding: 10px 0;
+  }
+  
+  /* Actions grid layout */
+  .dashboard-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 1000px; /* Max width to limit stretch */
+    justify-content: center; /* Center the action cards */
+    margin-top: 20px;
+  }
+  .dashboard-actions h3{
+    color:#000;
+  }
+  
+  .action-card {
+    background-color: #c02e2e;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(82, 25, 25, 0.1);
+    padding: 20px;
+    aspect-ratio: 1 / 1; /* Make cards square-shaped */
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #000; /* Black text */
+  }
+  
+  /* Hover effect for the action cards */
+  .action-card:hover {
+    transform: scale(1.05);
+    background-color: #4d687b;
+  }
+  
+  .action-card button {
+    background: #2196f3;
+    color: rgb(165, 17, 17);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .action-card button:hover {
+    background: #1976d2;
+  }
+  

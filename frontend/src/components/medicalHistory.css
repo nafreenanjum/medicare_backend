@@ -1,0 +1,98 @@
+/* Container for Medical History Section */
+
+
+body, html {
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-y: auto;    /* Keeps vertical scroll only when needed */
+}
+
+.container {
+  overflow: hidden;     /* Optional: For inner containers causing issues */
+}
+
+.medical-history-container {
+  margin: 20px;
+  padding: 20px;
+}
+
+/* Heading Styles */
+h2 {
+  text-align: center;
+  color: #2d3e50;
+  margin-bottom: 20px;
+}
+
+/* History Card Styles */
+.history-card {
+  background-color: #ffffff;           /* cleaner white background */
+  border-radius: 10px;                 /* slightly rounder corners */
+  padding: 20px;                      /* more padding for spacious feel */
+  margin: 12px 0;                    /* a bit more vertical spacing */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* softer, bigger shadow */
+  color: #000000;                    /* text color */
+  border: 2px solid #000000;         /* solid black border */
+  transition: box-shadow 0.3s ease; 
+  width:1450px; /* smooth shadow transition */
+}
+
+.history-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);  /* subtle hover lift effect */
+}
+
+.history-card p,
+.history-card strong {
+  color: #000000;
+  margin: 6px 0;   /* a little more spacing for readability */
+  line-height: 1.4; /* better line spacing */
+}
+
+
+/* Error Message */
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* General Message */
+.message {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Global Paragraph Styling */
+p {
+  font-size: 16px;
+  color: #000000;
+  margin-top: 8px;
+}
+.back-btn {
+  padding: 12px;
+   width:1350px!important;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.back-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-1px);
+}
+
+.back-btn:active {
+  background-color: #388e3c;
+  transform: scale(0.98);
+}
+
