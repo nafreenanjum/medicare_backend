@@ -694,7 +694,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // ✅ import this
 import axios from 'axios';
-import './SearchDoctor.css';
+import './searchDoctor.css';
 
 const SearchDoctor = () => {
   const [searchParams, setSearchParams] = useState({
