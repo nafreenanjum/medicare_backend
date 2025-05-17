@@ -20,6 +20,8 @@ const getMulterUploader = (folderName) => {
     },
   });
 
+  
+
   return multer({ storage: storage });
 };
 

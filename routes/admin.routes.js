@@ -6,6 +6,7 @@ const { registerAdmin, loginAdmin, getAllDoctors, getAllPatients, getAllAppointm
 router.post('/register', registerAdmin);
 router.post('/login', loginAdmin);
 router.get('/doctors', verifyToken(['admin']), getAllDoctors);
+
 router.get('/patients', verifyToken(['admin']), getAllPatients);
 router.get('/appointments', verifyToken(['admin']), getAllAppointments);
 router.put('/doctor/:doctorId/status', verifyToken(['admin']), updateDoctorStatus);
