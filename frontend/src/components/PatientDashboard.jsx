@@ -451,111 +451,6 @@
 // export default PatientDashboard;
 
 
-// import React, { useEffect, useState } from 'react';
-// import './PatientDashboard.css';
-// import { useNavigate } from 'react-router-dom';
-
-// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
-
-// const PatientDashboard = () => {
-//   const [patientInfo, setPatientInfo] = useState({});
-//   const [appointments, setAppointments] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [showAppointments, setShowAppointments] = useState(false);
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const token = localStorage.getItem('token');
-//         if (!token) throw new Error('No token found');
-
-//         const patientRes = await fetch(`${API_BASE_URL}/api/patients/me`, {
-//           headers: { Authorization: `Bearer ${token}` },
-//         });
-
-//         if (!patientRes.ok) throw new Error('Failed to fetch patient data');
-//         const patientData = await patientRes.json();
-//         setPatientInfo(patientData);
-//         localStorage.setItem('patientId', patientData._id);
-
-//         const appointRes = await fetch(`${API_BASE_URL}/api/appointments/patient/${patientData._id}`, {
-//           headers: { Authorization: `Bearer ${token}` },
-//         });
-
-//         if (!appointRes.ok) throw new Error('Failed to fetch appointments');
-//         const appointData = await appointRes.json();
-//         setAppointments(appointData.upcoming || []);
-//       } catch (err) {
-//         console.error('Error fetching dashboard data', err);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchData();
-//   }, []);
-
-//   if (loading) return <div className="dashboard-container">Loading...</div>;
-
-//   return (
-    
-    
-//     <div className="dashboard-container">
-//       <div className="dashboard-header">
-//         <div>
-//           <h2>Welcome, {patientInfo?.fullName}</h2>
-//           <p>{patientInfo?.email}</p>
-//         </div>
-//         <button
-//           className="logout-btn"
-//           onClick={() => {
-//             localStorage.removeItem('token');
-//             window.location.href = '/login';
-//           }}
-//         >
-//           Logout
-//         </button>
-//       </div>
-
-//       <div className="dashboard-section">
-//         <h3>📅 Your Appointments</h3>
-//         {!showAppointments ? (
-//           <>
-//             <p>No appointments visible. Click below to check.</p>
-//             <button onClick={() => setShowAppointments(true)}>Show Appointments</button>
-//           </>
-//         ) : appointments.length === 0 ? (
-//           <p>No upcoming appointments.</p>
-//         ) : (
-//           <ul className="appointment-list">
-//             {appointments.map((appt) => (
-//               <li key={appt._id}>
-//                 <strong>Doctor:</strong> {appt.doctor?.fullName} <br />
-//                 <strong>Specialty:</strong> {appt.doctor?.specialty} <br />
-//                 <strong>Date:</strong> {new Date(appt.appointmentDate).toLocaleDateString()} <br />
-//                 <strong>Time:</strong> {appt.appointmentTime} <br />
-//                 <strong>Status:</strong> {appt.status} <br />
-//               </li>
-//             ))}
-//           </ul>
-//         )}
-//       </div>
-
-//       <div className="dashboard-actions">
-//         <button onClick={() => navigate('/search-doctors')}>Search Doctors</button>
-//         <button onClick={() => navigate('/search-by-specialty')}>Search for Specialist</button>
-//         <button onClick={() => navigate('/medical-history')}>View Medical History</button>
-//         <button onClick={() => navigate('/request-ambulance')}>🚑 Emergency Request</button>
-//         <button onClick={() => navigate('/edit-profile')}>⚙️ Edit Profile</button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default PatientDashboard;
-
-
 
 import React, { useEffect, useState } from 'react';
 import './PatientDashboard.css';
@@ -683,3 +578,133 @@ const PatientDashboard = () => {
 };
 
 export default PatientDashboard;
+
+
+
+
+// import React, { useEffect, useState } from 'react';
+// import './PatientDashboard.css';
+// import { useNavigate } from 'react-router-dom';
+
+// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
+// const PatientDashboard = () => {
+//   const [patientInfo, setPatientInfo] = useState({});
+//   const [appointments, setAppointments] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [showAppointments, setShowAppointments] = useState(false);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const token = localStorage.getItem('token');
+//         if (!token) throw new Error('No token found');
+
+//         const patientRes = await fetch(`${API_BASE_URL}/api/patients/me`, {
+//           headers: { Authorization: `Bearer ${token}` },
+//         });
+
+//         if (!patientRes.ok) throw new Error('Failed to fetch patient data');
+//         const patientData = await patientRes.json();
+//         setPatientInfo(patientData);
+//         localStorage.setItem('patientId', patientData._id);
+
+//         const appointRes = await fetch(`${API_BASE_URL}/api/appointments/patient/${patientData._id}`, {
+//           headers: { Authorization: `Bearer ${token}` },
+//         });
+
+//         if (!appointRes.ok) throw new Error('Failed to fetch appointments');
+//         const appointData = await appointRes.json();
+//         setAppointments(appointData.upcoming || []);
+//       } catch (err) {
+//         console.error('Error fetching dashboard data', err);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   if (loading) return <div className="dashboard-container">Loading...</div>;
+
+//   return (
+//     <>
+//     <div className="login-header">
+//   {/* LEFT: Logo */}
+//   <div className="navbar-left" onClick={() => navigate('/dashboard')}>
+//     <img src="/logomedicare.jpg" alt="Logo" className="logo" />
+//   </div>
+
+//   {/* RIGHT: Home and Logout */}
+//   <div className="navbar-right">
+//     <button className="home-btn" onClick={() => navigate('/')}>Home</button>
+//     <button
+//       className="logout-btn"
+//       onClick={() => {
+//         localStorage.removeItem('token');
+//         window.location.href = '/login';
+//       }}
+//     >
+//       Logout
+//     </button>
+//   </div>
+// </div>
+
+
+
+//       {/* HEADER END */}
+
+//       {/* ADD PADDING TOP to prevent content hidden behind fixed header */}
+//       <div className="dashboard-container" style={{ paddingTop: '90px' }}>
+//         <div className="dashboard-header">
+//           <div>
+//             <h2>Welcome, {patientInfo?.fullName}</h2>
+//             <p>{patientInfo?.email}</p>
+//           </div>
+          
+//         </div>
+
+//         <div className="dashboard-section">
+//           <h3>📅 Your Appointments</h3>
+//           {!showAppointments ? (
+//             <>
+//               <p>No appointments visible. Click below to check.</p>
+//               <button onClick={() => setShowAppointments(true)}>Show Appointments</button>
+//             </>
+//           ) : appointments.length === 0 ? (
+//             <p>No upcoming appointments.</p>
+//           ) : (
+//             <>
+//               <button onClick={() => setShowAppointments(false)} style={{ marginBottom: '10px' }}>
+//                 Close Appointments
+//               </button>
+//               <ul className="appointment-list">
+//                 {appointments.map((appt) => (
+//                   <li key={appt._id}>
+//                     <strong>Doctor:</strong> {appt.doctor?.fullName} <br />
+//                     <strong>Specialty:</strong> {appt.doctor?.specialty} <br />
+//                     <strong>Date:</strong> {new Date(appt.appointmentDate).toLocaleDateString()} <br />
+//                     <strong>Time:</strong> {appt.appointmentTime} <br />
+//                     <strong>Status:</strong> {appt.status} <br />
+//                   </li>
+//                 ))}
+//               </ul>
+//             </>
+//           )}
+//         </div>
+
+//         <div className="dashboard-actions">
+//           <button onClick={() => navigate('/search-doctors')}>Search Doctors</button>
+//           <button onClick={() => navigate('/search-by-specialty')}>Search for Specialist</button>
+//           <button onClick={() => navigate('/medical-history')}>View Medical History</button>
+//           <button onClick={() => navigate('/request-ambulance')}>🚑 Emergency Request</button>
+//           <button onClick={() => navigate('/edit-profile')}>⚙️ Edit Profile</button>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default PatientDashboard;
