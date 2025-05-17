@@ -550,25 +550,138 @@
 // export default DoctorSeeReport;
 
 
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // Import useParams to get URL params
-import "./DoctorSeeReport.css"; // Ensure you have proper styling
+// import React, { useEffect, useState } from "react";
+// import { useParams } from "react-router-dom"; // Import useParams to get URL params
+// import "./DoctorSeeReport.css"; // Ensure you have proper styling
 
-const API_BASE_URL = "http://localhost:5000"; // Replace with your actual API base URL
+// const API_BASE_URL = "http://localhost:5000"; // Replace with your actual API base URL
+
+// const DoctorSeeReport = () => {
+//   const [history, setHistory] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState("");
+
+//   const { doctorId, patientId } = useParams(); // Extract doctorId and patientId from URL
+
+//   useEffect(() => {
+//     const fetchMedicalHistory = async () => {
+//       const token = localStorage.getItem("token"); // Token from local storage for authorization
+
+//       console.log("Patient ID:", patientId); // Log the patient ID
+//       console.log("Doctor ID:", doctorId); // Log the doctor ID
+
+//       if (!token || !patientId || !doctorId) {
+//         setLoading(false);
+//         setError("Missing token, patientId, or doctorId");
+//         return;
+//       }
+
+//       try {
+//         // Fetch medical history data for the correct patient using their patientId
+//         const res = await fetch(`${API_BASE_URL}/api/doctors/${doctorId}/patients/${patientId}/history`, {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//           },
+//         });
+
+//         if (!res.ok) {
+//           throw new Error("Failed to fetch medical history");
+//         }
+
+//         const data = await res.json();
+
+//         console.log("API Response:", data);
+
+//         if (data.history && Array.isArray(data.history)) {
+//           setHistory(data.history);
+//         } else {
+//           setError("No medical history found.");
+//         }
+//       } catch (err) {
+//         setError(err.message || "An error occurred while fetching data.");
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchMedicalHistory();
+//   }, [doctorId, patientId]); // Trigger re-fetch when doctorId or patientId changes
+
+//   if (loading) return <p>Loading medical history...</p>;
+//   if (error) return <p style={{ color: "red" }}>{error}</p>;
+
+//   return (
+//     <>
+//     <div className="login-header">
+//   {/* LEFT: Logo */}
+//   <div className="navbar-left" onClick={() => navigate('/dashboard')}>
+//     <img src="/logomedicare.jpg" alt="Logo" className="logo" />
+//   </div>
+
+//   {/* RIGHT: Home and Logout */}
+//   <div className="navbar-right">
+//     <button className="home-btn" onClick={() => navigate('/dashboard')}>Home</button>
+//     <button
+//       className="logout-btn"
+//       onClick={() => {
+//         localStorage.removeItem('token');
+//         window.location.href = '/login';
+//       }}
+//     >
+//       Logout
+//     </button>
+//   </div>
+// </div>
+//     <div className="doctor-see-report-container">
+//       <h2>🩺 Patient's Medical History</h2>
+//       {history.length > 0 ? (
+//         history.map((entry, index) => {
+//           const { appointmentDate, appointmentTime, reason, doctor, medicalHistory } = entry;
+//           return (
+//             <div className="history-card" key={entry._id || index}>
+//               <p><strong>Appointment Date:</strong> {appointmentDate || "N/A"}</p>
+//               <p><strong>Appointment Time:</strong> {appointmentTime || "N/A"}</p>
+//               <p><strong>Doctor's Specialty:</strong> {doctor ? doctor.specialty : "N/A"}</p>
+//               <p><strong>Reason:</strong> {reason || "N/A"}</p>
+//               <div className="medical-history-details">
+//                 <p><strong>Diagnosis:</strong> {medicalHistory?.diagnosis || "N/A"}</p>
+//                 <p><strong>Prescription:</strong> {medicalHistory?.prescription || "N/A"}</p>
+//                 <p><strong>Notes:</strong> {medicalHistory?.notes || "N/A"}</p>
+//               </div>
+//             </div>
+//           );
+//         })
+//       ) : (
+//         <p>No medical history available.</p>
+//       )}
+//       <button onClick={() => window.history.back()} className="back-btn">
+//         Back to Dashboard
+//       </button>
+//     </div>
+//     </>
+//   );
+// };
+
+// export default DoctorSeeReport;
+
+
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom"; // Added useNavigate
+import "./DoctorSeeReport.css";
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const DoctorSeeReport = () => {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const { doctorId, patientId } = useParams(); // Extract doctorId and patientId from URL
+  const { doctorId, patientId } = useParams();
+  const navigate = useNavigate(); // ✅ Added navigate
 
   useEffect(() => {
     const fetchMedicalHistory = async () => {
-      const token = localStorage.getItem("token"); // Token from local storage for authorization
-
-      console.log("Patient ID:", patientId); // Log the patient ID
-      console.log("Doctor ID:", doctorId); // Log the doctor ID
+      const token = localStorage.getItem("token");
 
       if (!token || !patientId || !doctorId) {
         setLoading(false);
@@ -577,7 +690,6 @@ const DoctorSeeReport = () => {
       }
 
       try {
-        // Fetch medical history data for the correct patient using their patientId
         const res = await fetch(`${API_BASE_URL}/api/doctors/${doctorId}/patients/${patientId}/history`, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -589,8 +701,6 @@ const DoctorSeeReport = () => {
         }
 
         const data = await res.json();
-
-        console.log("API Response:", data);
 
         if (data.history && Array.isArray(data.history)) {
           setHistory(data.history);
@@ -605,59 +715,57 @@ const DoctorSeeReport = () => {
     };
 
     fetchMedicalHistory();
-  }, [doctorId, patientId]); // Trigger re-fetch when doctorId or patientId changes
+  }, [doctorId, patientId]);
 
   if (loading) return <p>Loading medical history...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
   return (
     <>
-    <div className="login-header">
-  {/* LEFT: Logo */}
-  <div className="navbar-left" onClick={() => navigate('/dashboard')}>
-    <img src="/logomedicare.jpg" alt="Logo" className="logo" />
-  </div>
+      <div className="login-header">
+        <div className="navbar-left" onClick={() => navigate('/dashboard')}>
+          <img src="/logomedicare.jpg" alt="Logo" className="logo" />
+        </div>
+        <div className="navbar-right">
+          <button className="home-btn" onClick={() => navigate('/dashboard')}>Home</button>
+          <button
+            className="logout-btn"
+            onClick={() => {
+              localStorage.removeItem('token');
+              window.location.href = '/login';
+            }}
+          >
+            Logout
+          </button>
+        </div>
+      </div>
 
-  {/* RIGHT: Home and Logout */}
-  <div className="navbar-right">
-    <button className="home-btn" onClick={() => navigate('/dashboard')}>Home</button>
-    <button
-      className="logout-btn"
-      onClick={() => {
-        localStorage.removeItem('token');
-        window.location.href = '/login';
-      }}
-    >
-      Logout
-    </button>
-  </div>
-</div>
-    <div className="doctor-see-report-container">
-      <h2>🩺 Patient's Medical History</h2>
-      {history.length > 0 ? (
-        history.map((entry, index) => {
-          const { appointmentDate, appointmentTime, reason, doctor, medicalHistory } = entry;
-          return (
-            <div className="history-card" key={entry._id || index}>
-              <p><strong>Appointment Date:</strong> {appointmentDate || "N/A"}</p>
-              <p><strong>Appointment Time:</strong> {appointmentTime || "N/A"}</p>
-              <p><strong>Doctor's Specialty:</strong> {doctor ? doctor.specialty : "N/A"}</p>
-              <p><strong>Reason:</strong> {reason || "N/A"}</p>
-              <div className="medical-history-details">
-                <p><strong>Diagnosis:</strong> {medicalHistory?.diagnosis || "N/A"}</p>
-                <p><strong>Prescription:</strong> {medicalHistory?.prescription || "N/A"}</p>
-                <p><strong>Notes:</strong> {medicalHistory?.notes || "N/A"}</p>
+      <div className="doctor-see-report-container">
+        <h2>🩺 Patient's Medical History</h2>
+        {history.length > 0 ? (
+          history.map((entry, index) => {
+            const { appointmentDate, appointmentTime, reason, doctor, medicalHistory } = entry;
+            return (
+              <div className="history-card" key={entry._id || index}>
+                <p><strong>Appointment Date:</strong> {appointmentDate || "N/A"}</p>
+                <p><strong>Appointment Time:</strong> {appointmentTime || "N/A"}</p>
+                <p><strong>Doctor's Specialty:</strong> {doctor ? doctor.specialty : "N/A"}</p>
+                <p><strong>Reason:</strong> {reason || "N/A"}</p>
+                <div className="medical-history-details">
+                  <p><strong>Diagnosis:</strong> {medicalHistory?.diagnosis || "N/A"}</p>
+                  <p><strong>Prescription:</strong> {medicalHistory?.prescription || "N/A"}</p>
+                  <p><strong>Notes:</strong> {medicalHistory?.notes || "N/A"}</p>
+                </div>
               </div>
-            </div>
-          );
-        })
-      ) : (
-        <p>No medical history available.</p>
-      )}
-      <button onClick={() => window.history.back()} className="back-btn">
-        Back to Dashboard
-      </button>
-    </div>
+            );
+          })
+        ) : (
+          <p>No medical history available.</p>
+        )}
+        <button onClick={() => window.history.back()} className="back-btn">
+          Back to Dashboard
+        </button>
+      </div>
     </>
   );
 };

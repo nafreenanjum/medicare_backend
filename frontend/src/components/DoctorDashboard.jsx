@@ -1502,11 +1502,183 @@
 
 
 
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+// import { useNavigate } from 'react-router-dom';
+// import moment from 'moment';
+// import './DoctorDashboard.css';
+
+// const DoctorDashboard = () => {
+//   const [appointments, setAppointments] = useState([]);
+//   const [errorMessage, setErrorMessage] = useState('');
+//   const [loading, setLoading] = useState(false);
+//   const navigate = useNavigate();
+//   const doctorId = localStorage.getItem('doctorId');
+//   const token = localStorage.getItem('token');
+
+//   useEffect(() => {
+//     const fetchAppointments = async () => {
+//       setLoading(true);
+//       try {
+//         const response = await axios.get(`/api/appointments/doctor/${doctorId}`, {
+//           headers: {
+//             'Authorization': `Bearer ${token}`,
+//           }
+//         });
+//         setAppointments(response.data);
+//       } catch (error) {
+//         if (error.response?.status === 401) {
+//           setErrorMessage('Authorization token missing or invalid');
+//           navigate('/login');
+//         } else {
+//           setErrorMessage(error.response?.data?.message || 'Error fetching appointments');
+//         }
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchAppointments();
+//   }, [doctorId, token, navigate]);
+
+//   const updateAppointmentStatus = async (appointmentId, status) => {
+//     setLoading(true);
+//     try {
+//       await axios.patch(
+//         `/api/appointments/update-status/${appointmentId}`,
+//         { status },
+//         {
+//           headers: {
+//             'Authorization': `Bearer ${token}`,
+//           }
+//         }
+//       );
+
+//       setAppointments(prevAppointments =>
+//         prevAppointments.map(appointment =>
+//           appointment._id === appointmentId ? { ...appointment, status } : appointment
+//         )
+//       );
+//     } catch (error) {
+//       setErrorMessage(error.response?.data?.message || 'Error updating appointment status');
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const viewMedicalHistory = (patientId) => {
+//     if (patientId) {
+//       navigate(`/doctor/${doctorId}/patient/${patientId}/medical-history`);
+//     } else {
+//       setErrorMessage("Invalid patient ID");
+//     }
+//   };
+
+//   const logOut = () => {
+//     localStorage.removeItem('doctorId');
+//     localStorage.removeItem('token');
+//     navigate('/login');
+//   };
+
+//   return (
+//     <>
+//       <div className="login-header">
+//   {/* LEFT: Logo */}
+//   <div className="navbar-left" onClick={() => navigate('/dashboard')}>
+//     <img src="/logomedicare.jpg" alt="Logo" className="logo" />
+//   </div>
+
+//   {/* RIGHT: Home and Logout */}
+//   <div className="navbar-right">
+//     <button className="home-btn" onClick={() => navigate('/dashboard')}>Home</button>
+//     <button
+//       className="logout-btn"
+//       onClick={() => {
+//         localStorage.removeItem('token');
+//         window.location.href = '/login';
+//       }}
+//     >
+//       Logout
+//     </button>
+//   </div>
+// </div>
+//     <div className="doctor-dashboard">
+//       <h2>Doctor Dashboard</h2>
+//       {/* <button className="back-to-dashboard" onClick={logOut}>
+//         Log Out
+//       </button> */}
+
+//       {errorMessage && <p className="error-message">{errorMessage}</p>}
+//       {loading && <p>Loading...</p>}
+
+//       <h3>Upcoming Appointments</h3>
+//       <div className="appointments-list">
+//         {appointments.length === 0 ? (
+//           <p>No upcoming appointments.</p>
+//         ) : (
+//           appointments.map((appointment) => {
+//             const patient = appointment.patient || {};
+//             const patientName = patient.fullName || 'Unknown';
+//             const patientEmail = patient.email || 'N/A';
+//             const patientId = patient._id;
+
+//             return (
+//               <div key={appointment._id} className="appointment-card">
+//                 <p>Patient: {patientName}</p>
+//                 <p>Email: {patientEmail}</p>
+//                 <p>Date: {moment(appointment.appointmentDate, moment.ISO_8601, true).isValid() ? moment(appointment.appointmentDate).format('LL') : appointment.appointmentDate}</p>
+//                 <p>Time: {appointment.appointmentTime}</p>
+//                 <p>Status: {appointment.status}</p>
+
+//                 <div className="appointment-actions">
+//                   {/* Always show View Medical History */}
+//                   <button onClick={() => viewMedicalHistory(patientId)}>
+//                     View Medical History
+//                   </button>
+
+//                   {/* Show Confirm and Cancel if status is Pending */}
+//                   {appointment.status === 'Pending' && (
+//                     <>
+//                       <button onClick={() => updateAppointmentStatus(appointment._id, 'Confirmed')}>Confirm</button>
+//                       <button onClick={() => updateAppointmentStatus(appointment._id, 'Cancelled')}>Cancel</button>
+//                     </>
+//                   )}
+
+//                   {/* Show Mark as Completed if status is Confirmed */}
+//                   {appointment.status === 'Confirmed' && (
+//                     <button onClick={() => updateAppointmentStatus(appointment._id, 'Completed')}>
+//                       Mark as Completed
+//                     </button>
+//                   )}
+
+//                   {/* Show Update Medical Report if status is Completed */}
+//                   {appointment.status === 'Completed' && (
+//                     <button onClick={() => navigate(`/update-medical/${appointment._id}`)}>
+//                       Update Medical Report
+//                     </button>
+//                   )}
+//                 </div>
+//               </div>
+//             );
+//           })
+//         )}
+//       </div>
+//     </div>
+//     </>
+//   );
+// };
+
+// export default DoctorDashboard;
+
+
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import './DoctorDashboard.css';
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const DoctorDashboard = () => {
   const [appointments, setAppointments] = useState([]);
@@ -1520,10 +1692,10 @@ const DoctorDashboard = () => {
     const fetchAppointments = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`/api/appointments/doctor/${doctorId}`, {
+        const response = await axios.get(`${API_BASE_URL}/api/appointments/doctor/${doctorId}`, {
           headers: {
-            'Authorization': `Bearer ${token}`,
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
         setAppointments(response.data);
       } catch (error) {
@@ -1545,17 +1717,17 @@ const DoctorDashboard = () => {
     setLoading(true);
     try {
       await axios.patch(
-        `/api/appointments/update-status/${appointmentId}`,
+        `${API_BASE_URL}/api/appointments/update-status/${appointmentId}`,
         { status },
         {
           headers: {
-            'Authorization': `Bearer ${token}`,
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
-      setAppointments(prevAppointments =>
-        prevAppointments.map(appointment =>
+      setAppointments((prevAppointments) =>
+        prevAppointments.map((appointment) =>
           appointment._id === appointmentId ? { ...appointment, status } : appointment
         )
       );
@@ -1570,7 +1742,7 @@ const DoctorDashboard = () => {
     if (patientId) {
       navigate(`/doctor/${doctorId}/patient/${patientId}/medical-history`);
     } else {
-      setErrorMessage("Invalid patient ID");
+      setErrorMessage('Invalid patient ID');
     }
   };
 
@@ -1583,87 +1755,89 @@ const DoctorDashboard = () => {
   return (
     <>
       <div className="login-header">
-  {/* LEFT: Logo */}
-  <div className="navbar-left" onClick={() => navigate('/dashboard')}>
-    <img src="/logomedicare.jpg" alt="Logo" className="logo" />
-  </div>
+        {/* LEFT: Logo */}
+        <div className="navbar-left" onClick={() => navigate('/dashboard')}>
+          <img src="/logomedicare.jpg" alt="Logo" className="logo" />
+        </div>
 
-  {/* RIGHT: Home and Logout */}
-  <div className="navbar-right">
-    <button className="home-btn" onClick={() => navigate('/dashboard')}>Home</button>
-    <button
-      className="logout-btn"
-      onClick={() => {
-        localStorage.removeItem('token');
-        window.location.href = '/login';
-      }}
-    >
-      Logout
-    </button>
-  </div>
-</div>
-    <div className="doctor-dashboard">
-      <h2>Doctor Dashboard</h2>
-      {/* <button className="back-to-dashboard" onClick={logOut}>
-        Log Out
-      </button> */}
-
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      {loading && <p>Loading...</p>}
-
-      <h3>Upcoming Appointments</h3>
-      <div className="appointments-list">
-        {appointments.length === 0 ? (
-          <p>No upcoming appointments.</p>
-        ) : (
-          appointments.map((appointment) => {
-            const patient = appointment.patient || {};
-            const patientName = patient.fullName || 'Unknown';
-            const patientEmail = patient.email || 'N/A';
-            const patientId = patient._id;
-
-            return (
-              <div key={appointment._id} className="appointment-card">
-                <p>Patient: {patientName}</p>
-                <p>Email: {patientEmail}</p>
-                <p>Date: {moment(appointment.appointmentDate, moment.ISO_8601, true).isValid() ? moment(appointment.appointmentDate).format('LL') : appointment.appointmentDate}</p>
-                <p>Time: {appointment.appointmentTime}</p>
-                <p>Status: {appointment.status}</p>
-
-                <div className="appointment-actions">
-                  {/* Always show View Medical History */}
-                  <button onClick={() => viewMedicalHistory(patientId)}>
-                    View Medical History
-                  </button>
-
-                  {/* Show Confirm and Cancel if status is Pending */}
-                  {appointment.status === 'Pending' && (
-                    <>
-                      <button onClick={() => updateAppointmentStatus(appointment._id, 'Confirmed')}>Confirm</button>
-                      <button onClick={() => updateAppointmentStatus(appointment._id, 'Cancelled')}>Cancel</button>
-                    </>
-                  )}
-
-                  {/* Show Mark as Completed if status is Confirmed */}
-                  {appointment.status === 'Confirmed' && (
-                    <button onClick={() => updateAppointmentStatus(appointment._id, 'Completed')}>
-                      Mark as Completed
-                    </button>
-                  )}
-
-                  {/* Show Update Medical Report if status is Completed */}
-                  {appointment.status === 'Completed' && (
-                    <button onClick={() => navigate(`/update-medical/${appointment._id}`)}>
-                      Update Medical Report
-                    </button>
-                  )}
-                </div>
-              </div>
-            );
-          })
-        )}
+        {/* RIGHT: Home and Logout */}
+        <div className="navbar-right">
+          <button className="home-btn" onClick={() => navigate('/dashboard')}>
+            Home
+          </button>
+          <button
+            className="logout-btn"
+            onClick={() => {
+              localStorage.removeItem('token');
+              window.location.href = '/login';
+            }}
+          >
+            Logout
+          </button>
+        </div>
       </div>
-    </div>
+      <div className="doctor-dashboard">
+        <h2>Doctor Dashboard</h2>
+
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {loading && <p>Loading...</p>}
+
+        <h3>Upcoming Appointments</h3>
+        <div className="appointments-list">
+          {appointments.length === 0 ? (
+            <p>No upcoming appointments.</p>
+          ) : (
+            appointments.map((appointment) => {
+              const patient = appointment.patient || {};
+              const patientName = patient.fullName || 'Unknown';
+              const patientEmail = patient.email || 'N/A';
+              const patientId = patient._id;
+
+              return (
+                <div key={appointment._id} className="appointment-card">
+                  <p>Patient: {patientName}</p>
+                  <p>Email: {patientEmail}</p>
+                  <p>
+                    Date:{' '}
+                    {moment(appointment.appointmentDate, moment.ISO_8601, true).isValid()
+                      ? moment(appointment.appointmentDate).format('LL')
+                      : appointment.appointmentDate}
+                  </p>
+                  <p>Time: {appointment.appointmentTime}</p>
+                  <p>Status: {appointment.status}</p>
+
+                  <div className="appointment-actions">
+                    <button onClick={() => viewMedicalHistory(patientId)}>View Medical History</button>
+
+                    {appointment.status === 'Pending' && (
+                      <>
+                        <button onClick={() => updateAppointmentStatus(appointment._id, 'Confirmed')}>
+                          Confirm
+                        </button>
+                        <button onClick={() => updateAppointmentStatus(appointment._id, 'Cancelled')}>
+                          Cancel
+                        </button>
+                      </>
+                    )}
+
+                    {appointment.status === 'Confirmed' && (
+                      <button onClick={() => updateAppointmentStatus(appointment._id, 'Completed')}>
+                        Mark as Completed
+                      </button>
+                    )}
+
+                    {appointment.status === 'Completed' && (
+                      <button onClick={() => navigate(`/update-medical/${appointment._id}`)}>
+                        Update Medical Report
+                      </button>
+                    )}
+                  </div>
+                </div>
+              );
+            })
+          )}
+        </div>
+      </div>
     </>
   );
 };
