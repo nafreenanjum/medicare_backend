@@ -246,7 +246,7 @@ const BookAppointment = () => {
     <>
       <div className="login-header">
         <div className="navbar-left" onClick={() => navigate('/dashboard')}>
-          <img src="/logomedicare.jpg" alt="Logo" className="logo" />
+          <link rel="icon" type="image/jpeg" href="/logomedicare.jpg" />
         </div>
 
         <div className="navbar-right">
