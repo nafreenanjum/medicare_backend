@@ -466,6 +466,8 @@ const PatientDashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log('API_BASE_URL:', import.meta.env.VITE_API_BASE_URL);
+
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('token');
